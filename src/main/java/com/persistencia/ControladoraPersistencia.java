@@ -2,6 +2,10 @@
 package com.persistencia;
 
 import com.logica.Automovil;
+import com.persistencia.exceptions.NonexistentEntityException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControladoraPersistencia {
     
@@ -9,6 +13,30 @@ public class ControladoraPersistencia {
 
     public void agregarAutomovil(Automovil auto) {
         autoJpa.create(auto);
+    }
+
+    public List<Automovil> traerAutos() {
+        return autoJpa.findAutomovilEntities();
+    }
+
+    public void borrarAuto(int idAuto) {
+        try {
+            autoJpa.destroy(idAuto);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Automovil traerAutos(int IdAuto) {
+        return autoJpa.findAutomovil(IdAuto);
+    }
+
+    public void modificarAuto(Automovil auto) {
+        try {
+            autoJpa.edit(auto);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

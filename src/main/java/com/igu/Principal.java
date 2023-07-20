@@ -30,6 +30,11 @@ public class Principal extends javax.swing.JFrame {
         btn_salir.setText("Salir");
 
         btn_consulta.setText("Consulta, edicion y baja");
+        btn_consulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consultaActionPerformed(evt);
+            }
+        });
 
         btn_alta.setText("Alta de Automoviles");
         btn_alta.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +89,13 @@ public class Principal extends javax.swing.JFrame {
         alta.setVisible(true);
         alta.setLocationRelativeTo(null);
     }//GEN-LAST:event_btn_altaActionPerformed
+
+    private void btn_consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultaActionPerformed
+        //Instancia a consultaAutomovil
+        ConsultaAutomovil consu = new ConsultaAutomovil();
+        consu.setVisible(true);
+        consu.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btn_consultaActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_alta;
